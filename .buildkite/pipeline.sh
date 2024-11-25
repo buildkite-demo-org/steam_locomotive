@@ -1,12 +1,20 @@
 #!/bin/bash
 
-# exit immediately on failure, or if an undefined variable is used
 set -eu
 
-# begin the pipeline.yml file
 echo "steps:"
 
-# add a new command step to run the tests in each test directory
-for test_dir in test/*/; do
-  echo "  - command: ".buildkite/test/test.sh""
+# A step for each dir in specs/
+
+find specs/* -type d | while read -r D; do
+  echo "  - command: \"$D/test.sh\""
+  echo "    label: \"$(basename "$D")\""
 done
+
+# A deploy step only if it's the master branch
+
+if [[ "$BUILDKITE_BRANCH" == "master" ]]; then
+  echo "  - wait"
+  echo "  - command: \"echo Deploy!\""
+  echo "    label: \":rocket:\""
+fi
