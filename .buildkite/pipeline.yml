@@ -1,6 +1,6 @@
 steps:
-  - command: "installations/install_steam_locomotive.sh"
+  - command: "installations/install_pip.sh"
     label: "Install the needed binaries"
 
-  - command: "running_scripts/run_steam_locomotive.sh"
-    label: "Runs the steam locomotive script"
+  - command: "running_scripts/run_pip_installs.sh"
+    label: "Runs the nginxpy installation"
