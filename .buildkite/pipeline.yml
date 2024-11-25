@@ -1,7 +1,4 @@
 steps:
-  - command: .buildkite/pipeline.sh | buildkite-agent pipeline upload
-    label: ":pipeline: Upload"
-
   - command: "installations/install_pip.sh"
     label: "Install the needed binaries"
 
