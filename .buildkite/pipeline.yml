@@ -1,7 +1,4 @@
 steps:
-  - command: "buildkite-agent pipeline upload"
-    label: ":pipeline:"
-
   - command: "installations/install_steam_locomotive.sh"
     label: "Install the needed binaries"
 
