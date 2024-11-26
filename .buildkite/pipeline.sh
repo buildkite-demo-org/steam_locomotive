@@ -11,4 +11,16 @@ find specs/* -type d | while read -r D; do
   echo "    label: \"$(basename "$D")\""
 done
 
-exit 0
+find config/* -name "*.sh" | while read -r D; do
+  #base_name=$(basename ${D})
+  echo "  - command: \"$D\""
+  echo "    label: \"$(basename "$D")\""
+done
+
+# A deploy step only if it's the master branch
+
+if [[ "$BUILDKITE_BRANCH" == "master" ]]; then
+  echo "  - wait"
+  echo "  - command: \"echo Deploy!\""
+  echo "    label: \":rocket:\""
+fi
