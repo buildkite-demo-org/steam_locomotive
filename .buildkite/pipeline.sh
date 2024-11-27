@@ -25,7 +25,7 @@ if [[ "$BUILDKITE_BRANCH" == "main" ]]; then
   echo "    label: \":rocket:\""
 fi
 
-if [[ "$BUILDKITE_BUILD_CREATOR " == "DiogoFraga" ]]; then
+if [[ "$BUILDKITE_BUILD_AUTHOR" == "DiogoFraga" ]]; then
   echo "  - wait"
   echo "  - command: \"echo Deploy User!\""
   echo "    label: \":rocket:\""
